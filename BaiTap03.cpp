@@ -1,9 +1,5 @@
-#include <iostream>
-#include <cstdlib>
-
+#include<iostream>
 using namespace std;
-
-// Hàm tìm vị trí của phần tử nhỏ nhất trong mảng
 int timViTriMin(int *arr, int n) {
     int minIndex = 0;
     for (int i = 1; i < n; i++) {
@@ -14,10 +10,18 @@ int timViTriMin(int *arr, int n) {
     return minIndex;
 }
 
-// Hàm sắp xếp mảng theo thứ tự tăng dần (sử dụng thuật toán sắp xếp chèn)
-// (Giữ nguyên hàm này)
+void sapXepTangDan(int *arr, int n) {
+    for (int i = 1; i < n; i++) {
+        int key = *(arr + i);
+        int j = i - 1;
+        while (j >= 0 && *(arr + j) > key) {
+            *(arr + j + 1) = *(arr + j);
+            j--;
+        }
+        *(arr + j + 1) = key;
+    }
+}
 
-// Hàm tính điểm trung bình, loại bỏ điểm nhỏ nhất
 float tinhDiemTrungBinh(int *arr, int n) {
     int minIndex = timViTriMin(arr, n);
     int tong = 0;
@@ -30,6 +34,7 @@ float tinhDiemTrungBinh(int *arr, int n) {
     }
     return (float)tong / dem;
 }
+
 int main() {
     int n;
 
